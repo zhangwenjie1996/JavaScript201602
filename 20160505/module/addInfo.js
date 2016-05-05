@@ -14,7 +14,11 @@ function init(query, res) {
     data = JSON.parse(data);
 
     //->给要增加的结构内容中创建ID:原来记录最后一条信息的ID加上1就是当前我们需要的ID
-    obj.id = parseInt(data[data.length - 1].id) + 1;
+    if (data.length === 0) {
+        obj.id = 1;
+    } else {
+        obj.id = parseInt(data[data.length - 1].id) + 1;
+    }
 
     //->把我需要增加的内容obj存放到data中
     data.push(obj);
